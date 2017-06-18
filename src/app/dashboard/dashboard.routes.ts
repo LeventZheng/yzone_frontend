@@ -1,3 +1,7 @@
+import { AlbumComponent } from './album/album.component';
+import { VideoManageComponent } from './material/video-manage/video-manage.component';
+import { MusicManageComponent } from './material/music-manage/music-manage.component';
+import { ImgManageComponent } from './material/img-manage/img-manage.component';
 import { Route, RouterModule } from '@angular/router';
 // import { DashboardComponent } from './dashboard.component';
 import { HomeComponent } from './home/home.component';
@@ -63,6 +67,11 @@ export const MODULE_ROUTES: Route[] =[
     { path: 'calendar', component: CalendarComponent },
     { path: 'pages/user', component: UserComponent },
     { path: 'pages/timeline', component: TimelineComponent },
+
+    { path: 'material/img', component: ImgManageComponent },
+    { path: 'material/music', component: MusicManageComponent },
+    { path: 'material/video', component: VideoManageComponent },
+    { path: 'album', component: AlbumComponent },
 
 ]
 //
