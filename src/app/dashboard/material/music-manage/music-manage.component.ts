@@ -9,7 +9,8 @@ import { Music } from './../../../models/music';
   providers: [ MusicService]
 })
 export class MusicManageComponent implements OnInit {
-
+  selectedMusic: Music;
+  audioObj;
   musicList: Music[] = new Array<Music>();
   constructor(
     private http: MusicService
@@ -19,5 +20,23 @@ export class MusicManageComponent implements OnInit {
     this.http.getMusicListByUser().subscribe((data) => {
       this.musicList = COMMON.getBody(data);
     });
+  }
+
+  playAudio(music: Music) {
+    if (this.selectedMusic === music) {
+      if (this.audioObj.paused) {
+        this.audioObj.play();
+      } else {
+        this.audioObj.pause();
+      }
+    } else {
+      this.selectedMusic = music;
+      if (!this.audioObj) {
+        this.audioObj = document.getElementById('audio');
+      }
+      setTimeout(() => {
+        this.audioObj.play();
+      },100);
+    }
   }
 }

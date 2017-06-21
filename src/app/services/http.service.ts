@@ -23,7 +23,7 @@ export class HttpService {
         const options = new RequestOptions({ headers });
         this.http.post(REQUEST_URL.login, JSON.stringify(params), options)
             .subscribe((data) => {
-                this.setToken(COMMON.getBody(data));
+                this.setToken(COMMON.clone(data)._body);
             });
     }
 
