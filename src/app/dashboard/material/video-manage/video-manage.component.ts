@@ -12,7 +12,7 @@ import { VideoService, COMMON } from './../../../services/video.service';
 export class VideoManageComponent implements OnInit {
 
   pageNumber = 1;
-  pageSize = 12;
+  pageSize = 6;
   videoList: Video[] = new Array<Video>();
   constructor(private http: VideoService) { }
 
