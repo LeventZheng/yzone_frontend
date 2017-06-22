@@ -1,3 +1,82 @@
-<p>
-  video-manage works!
-</p>
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card-content">
+          <ul class="pagination pagination-primary">
+            <li>
+              <a href="javascript:void(0);">1</a>
+            </li>
+            <li>
+              <a href="javascript:void(0);">...</a>
+            </li>
+            <li>
+              <a href="javascript:void(0);">5</a>
+            </li>
+            <li>
+              <a href="javascript:void(0);">6</a>
+            </li>
+            <li class="active">
+              <a href="javascript:void(0);">7</a>
+            </li>
+            <li>
+              <a href="javascript:void(0);">8</a>
+            </li>
+            <li>
+              <a href="javascript:void(0);">9</a>
+            </li>
+            <li>
+              <a href="javascript:void(0);">...</a>
+            </li>
+            <li>
+              <a href="javascript:void(0);">12</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-md-6" *ngFor="let video of videoList">
+        <div class="card card-product">
+          <div class="card-image" data-header-animation="true">
+            <a href="#pablo">
+              <!--<img class="img" src="../assets/img/card-2.jpeg">-->
+              <video [src]="video.fileUrl" controls="controls"></video>
+            </a>
+          </div>
+          <div class="card-content">
+            <div class="card-actions">
+              <button type="button" class="btn btn-danger btn-simple fix-broken-card">
+                  <i class="material-icons">build</i> Fix Header!
+              </button>
+              <button type="button" class="btn btn-default btn-simple" rel="tooltip" data-placement="bottom" title="播放">
+                  <i class="material-icons">art_track</i>
+              </button>
+              <button type="button" class="btn btn-success btn-simple" rel="tooltip" data-placement="bottom" title="编辑">
+                  <i class="material-icons">edit</i>
+              </button>
+              <button type="button" class="btn btn-danger btn-simple" rel="tooltip" data-placement="bottom" title="删除">
+                  <i class="material-icons">close</i>
+              </button>
+            </div>
+            <h4 class="card-title">
+              <a href="#pablo">{{video.videoTitle}}</a>
+            </h4>
+            <div class="card-description">
+              {{video.fileUrl}}
+              <!--The place is close to Barceloneta Beach and bus stop just 2 min by walk and...-->
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="price">
+              <h4>阅读数：0</h4>
+            </div>
+            <div class="stats pull-right">
+              <p class="category"><i class="material-icons text-danger">thumb_up</i>&nbsp;&nbsp; 0</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

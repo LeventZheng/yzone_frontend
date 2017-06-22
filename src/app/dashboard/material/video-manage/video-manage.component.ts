@@ -12,13 +12,13 @@ import { VideoService, COMMON } from './../../../services/video.service';
 export class VideoManageComponent implements OnInit {
 
   pageNumber = 1;
-  pageSize = 16;
+  pageSize = 12;
   videoList: Video[] = new Array<Video>();
   constructor(private http: VideoService) { }
 
   ngOnInit() {
     this.http.getVideoListByUser({pageNumber:this.pageNumber,pageSize:this.pageSize}).subscribe((data) => {
-      this.videoList = COMMON.getBody(data);
+      this.videoList = COMMON.getBody(data).content;
     });
   }
 
