@@ -13,6 +13,7 @@ export class VideoManageComponent implements OnInit {
 
   pageNumber = 1;
   pageSize = 6;
+
   videoList: Video[] = new Array<Video>();
   constructor(private http: VideoService) { }
 
@@ -20,6 +21,10 @@ export class VideoManageComponent implements OnInit {
     this.http.getVideoListByUser({pageNumber:this.pageNumber,pageSize:this.pageSize}).subscribe((data) => {
       this.videoList = COMMON.getBody(data).content;
     });
+  }
+
+  pageChanged(e) {
+    console.log(e);
   }
 
 }
