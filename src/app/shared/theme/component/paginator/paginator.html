@@ -1,0 +1,31 @@
+<div class="card-content">
+    <ul class="pagination pagination-primary">
+        <li>
+            <a href="javascript:void(0);" class="ui-paginator-first ui-paginator-element ui-state-default ui-corner-all" (click)="changePageToFirst($event)"
+                [ngClass]="{'ui-state-disabled':isFirstPage()}" [tabindex]="isFirstPage() ? -1 : null">
+                <span class="fa fa-step-backward"></span>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:void(0);" class="ui-paginator-prev ui-paginator-element ui-state-default ui-corner-all" (click)="changePageToPrev($event)"
+                [ngClass]="{'ui-state-disabled':isFirstPage()}" [tabindex]="isFirstPage() ? -1 : null">
+                <span class="fa fa-backward"></span>
+            </a>
+        </li>
+        <li *ngFor="let pageLink of pageLinks" [ngClass]="{'active': (pageLink-1 == getPage())}">
+            <a href="javascript:void(0);"  (click)="changePage(pageLink - 1, $event)">{{pageLink}}</a>
+        </li>
+        <li>
+            <a href="javascript:void(0);" class="ui-paginator-next ui-paginator-element ui-state-default ui-corner-all" (click)="changePageToNext($event)"
+                [ngClass]="{'ui-state-disabled':isLastPage()}" [tabindex]="isLastPage() ? -1 : null">
+                <span class="fa fa-forward"></span>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:void(0);" class="ui-paginator-last ui-paginator-element ui-state-default ui-corner-all" (click)="changePageToLast($event)"
+                [ngClass]="{'ui-state-disabled':isLastPage()}" [tabindex]="isLastPage() ? -1 : null">
+                <span class="fa fa-step-forward"></span>
+            </a>
+        </li>
+    </ul>
+</div>
