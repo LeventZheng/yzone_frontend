@@ -1,3 +1,4 @@
+import { PaginatorModule } from './../shared/theme/component/paginator/paginator';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,6 +12,7 @@ import { AlbumComponent } from './album/album.component';
 @NgModule({
     imports: [
         BrowserModule,
+        PaginatorModule,
         RouterModule.forChild(MODULE_ROUTES)
     ],
     declarations: [ MODULE_COMPONENTS, ImgManageComponent, MusicManageComponent, VideoManageComponent, AlbumComponent ]
