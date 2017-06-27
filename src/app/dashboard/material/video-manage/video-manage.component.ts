@@ -14,7 +14,6 @@ export class VideoManageComponent implements OnInit {
   pageNumber = 1;
   pageSize = 6;
   totalElements: number;
-
   videoList: Video[] = new Array<Video>();
   constructor(private http: VideoService) { }
 
