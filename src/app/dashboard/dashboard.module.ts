@@ -1,3 +1,5 @@
+import { LightboxModule } from './../shared/theme/component/lightbox/lightbox';
+import { GalleriaModule } from './../shared/theme/component/galleria/galleria';
 import { PaginatorModule } from './../shared/theme/component/paginator/paginator';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -12,7 +14,9 @@ import { AlbumComponent } from './album/album.component';
 @NgModule({
     imports: [
         BrowserModule,
+        LightboxModule,
         PaginatorModule,
+        GalleriaModule,
         RouterModule.forChild(MODULE_ROUTES)
     ],
     declarations: [ MODULE_COMPONENTS, ImgManageComponent, MusicManageComponent, VideoManageComponent, AlbumComponent ]

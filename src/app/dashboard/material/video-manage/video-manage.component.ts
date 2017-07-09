@@ -26,11 +26,6 @@ export class VideoManageComponent implements OnInit {
       this.videoList = COMMON.getBody(data).content;
       this.totalElements = COMMON.getBody(data).totalElements;
     });
-
-  }
-
-  pageChanged(e) {
-    console.log(e);
   }
 
   paginate(e) {
