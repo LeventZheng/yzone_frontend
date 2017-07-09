@@ -1,8 +1,14 @@
-<p>
-  album works!
-</p>
-
-
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row" *ngFor="let album of albumList">
+      <p-lightbox *ngIf="album.resourceType==1" [images]="album.photoList" [styleClass]="'lightbox'"></p-lightbox>
+      <video *ngIf="album.resourceType==2" [src]="album.video.fileUrl" controls="controls"></video>
+      <br>
+      <br>
+      <br>
+    </div>
+  </div>
+</div>
 <div class="main-content">
   <div class="container-fluid">
     <div class="row">
