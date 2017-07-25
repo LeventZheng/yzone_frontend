@@ -2,14 +2,47 @@
 <div class="main-content">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-3 col-md-6 col-sm-6" *ngFor="let music of musicList">
+      <div class="col-lg-4 col-md-6 mb_15
+      
+      " *ngFor="let music of musicList;let i=index;">
+        <div class="card card-product">
+          <div class="flex mb_15">
+            <div class="card-header" [attr.data-background-color]="i%3==0?'orange':i%3==1?'green':'blue'">
+              <i class="material-icons">store</i>
+            </div>
+            <div class="flex_1 mt_10">
+              <!--<h4 class="card-title">
+                <a href="#pablo">作者</a>
+              </h4>-->
+              <div class="card-description">
+                <input type="text" class="form-control" [(ngModel)]="music.muiscTitle">
+              </div>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-actions">
+              <button type="button" class="btn btn-success btn-simple" rel="tooltip" data-placement="bottom" title="播放"
+                (click)="playAudio(music)">
+                        <i class="material-icons">play_arrow</i>
+                    </button>
+              <button type="button" class="btn btn-primary btn-simple" rel="tooltip" data-placement="bottom" title="保存"
+                (click)="save(music)">
+                        <i class="material-icons">edit</i>
+                    </button>
+              <button type="button" class="btn btn-danger btn-simple" rel="tooltip" data-placement="bottom" title="删除">
+                        <i class="material-icons">close</i>
+                    </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--<div class="col-lg-3 col-md-6 col-sm-6" *ngFor="let music of musicList">
         <div class="card card-stats">
           <div class="card-header" data-background-color="orange">
             <i (click)="playAudio(music)" class="material-icons cur_p">queue music</i>
           </div>
           <div class="card-content">
             <p class="category">{{music.muiscTitle}}</p>
-            <!--<h3 class="card-title">引用量:0</h3>-->
           </div>
           <div class="card-footer">
             <div class="stats">
@@ -18,7 +51,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div>-->
     </div>
   </div>
 </div>

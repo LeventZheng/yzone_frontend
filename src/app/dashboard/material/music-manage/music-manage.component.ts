@@ -39,4 +39,11 @@ export class MusicManageComponent implements OnInit {
       },100);
     }
   }
+  save(music: Music) {
+    console.log(music);
+    this.http.save(music).subscribe((data) => {
+      console.log(data);
+    });
+  }
+
 }

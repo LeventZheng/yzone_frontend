@@ -1,9 +1,11 @@
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
+
 import { LightboxModule } from './../shared/theme/component/lightbox/lightbox';
 import { GalleriaModule } from './../shared/theme/component/galleria/galleria';
 import { PaginatorModule } from './../shared/theme/component/paginator/paginator';
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { BrowserModule } from '@angular/platform-browser';
 
 import { MODULE_ROUTES, MODULE_COMPONENTS } from './dashboard.routes';
 import { ImgManageComponent } from './material/img-manage/img-manage.component';
@@ -14,6 +16,7 @@ import { AlbumComponent } from './album/album.component';
 @NgModule({
     imports: [
         BrowserModule,
+        FormsModule,
         LightboxModule,
         PaginatorModule,
         GalleriaModule,
