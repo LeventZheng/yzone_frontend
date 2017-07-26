@@ -8,5 +8,4 @@ export const ROUTES: RouteInfo[] = [
     { path: 'material/music', title: '音频', menuType: MenuType.LEFT, icon:'material-icons'},
     { path: 'material/video', title: '视频', menuType: MenuType.LEFT, icon:'material-icons'},
 
-
 ];

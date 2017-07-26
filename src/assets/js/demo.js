@@ -460,7 +460,7 @@ demo = {
             });
 	},
 
-    initGoogleMaps: function(){
+    /* initGoogleMaps: function(){
         var myLatlng = new google.maps.LatLng(40.748817, -73.985428);
         var mapOptions = {
           zoom: 13,
@@ -542,7 +542,7 @@ demo = {
         marker.setMap(map);
 
 
-    },
+    }, */
 
     initFullCalendar: function(){
         $calendar = $('#fullCalendar');

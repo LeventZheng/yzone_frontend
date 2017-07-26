@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
         $.getScript('../assets/js/init/initMenu.js');
         $.getScript('../assets/js/demo.js');
 
-        this.http.login();
+        // this.http.login();
     }
     public isMap() {
         // console.log(this.location);
