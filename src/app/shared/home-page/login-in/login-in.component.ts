@@ -1,3 +1,4 @@
+import { HomePageService } from './../../../services/home-page.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginInComponent implements OnInit {
 
-  constructor() { }
+  email: string;
+  password: string;
+
+  constructor(
+    private http: HomePageService
+  ) { }
 
   ngOnInit() {
+  }
+
+  onSubmit() {
+    this.http.login({email: this.email, password: this.password});
   }
 
 }

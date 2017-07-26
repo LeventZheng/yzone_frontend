@@ -12,19 +12,17 @@ export class HttpService {
     setToken(token: string): void {
         localStorage['Authorization'] = 'Bearer ' + token;
     }
-
+    
     getToken(): string {
         return localStorage['Authorization'];
     }
 
-    login() {
-        const params = {email: 'admin@yzone.com', password: 'admin'};
+    postWithoutToken(url, params) {
         const headers = new Headers({ 'Content-Type': 'application/json'});
         const options = new RequestOptions({ headers });
-        this.http.post(REQUEST_URL.login, JSON.stringify(params), options)
-            .subscribe((data) => {
-                this.setToken(COMMON.clone(data)._body);
-            });
+        return this.http.post(url, JSON.stringify(params), options)
+            .map(this.extractData)
+            .catch(this.handleError);
     }
 
     post(url, params = {}, contentType = 'application/json') {
@@ -32,7 +30,7 @@ export class HttpService {
         const options = new RequestOptions({ headers });
         return this.http.post(url, JSON.stringify(params), options)
             .map(this.extractData)
-            .catch(this.handleError);;
+            .catch(this.handleError);
     }
 
     get(url, params = {}, contentType = 'application/json') {

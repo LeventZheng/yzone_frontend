@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+
+import { HomePageService } from './../../services/home-page.service';
 
 import { RegisterComponent } from './register/register.component';
 import { LoginInComponent } from './login-in/login-in.component';
@@ -18,11 +21,13 @@ import { SignBarComponent } from './sign-bar/sign-bar.component';
 @NgModule({
     imports: [
         BrowserModule,
+        FormsModule,
         HttpModule,
     ],
     exports: [
         BrowserModule,
         HttpModule,
+        FormsModule,
         FooterComponent,
         NavbarComponent,
         LockScreenComponent,
@@ -34,10 +39,9 @@ import { SignBarComponent } from './sign-bar/sign-bar.component';
         NavbarComponent,
         LockScreenComponent,
         LoginInComponent,
-        RegisterComponent
-,
-    SignBarComponent
-],
-    providers: [],
+        RegisterComponent,
+        SignBarComponent
+    ],
+    providers: [HomePageService],
 })
 export class HomePageModule { }

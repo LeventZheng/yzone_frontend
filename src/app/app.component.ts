@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { LocationStrategy, PlatformLocation, Location } from '@angular/common';
 
 import { HttpService } from './services/http.service';
-// import { COMMOM } from './common';
+
 declare var $: any;
 
 @Component({
@@ -23,12 +23,13 @@ export class AppComponent implements OnInit {
         private http: HttpService) {
         this.location = location;
     }
+
     ngOnInit() {
         $.getScript('../assets/js/init/initMenu.js');
         $.getScript('../assets/js/demo.js');
-
-        // this.http.login();
+        // TODO: 检查用户是否登录
     }
+
     public isMap() {
         // console.log(this.location);
         if (this.location.prepareExternalUrl(this.location.path()) === '#/maps/fullscreen') {

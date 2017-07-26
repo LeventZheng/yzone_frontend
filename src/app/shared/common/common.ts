@@ -1,7 +1,7 @@
 
 export const COMMON = {
-    API_URL: 'http://localhost:8080/yzone',
-    API_REST: 'http://localhost:8080/yzone/rest',
+    API_aURL: 'http://192.168.1.4:8080/yzone',
+    API_URL: 'http://192.168.1.4:8080/yzone/rest',
     clone(data) {
         return JSON.parse(JSON.stringify(data))
     },
