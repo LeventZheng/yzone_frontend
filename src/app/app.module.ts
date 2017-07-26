@@ -1,3 +1,6 @@
+import { LockScreenModule } from './shared/lock-screen/lock-screen.module';
+import { LoginInModule } from './shared/login-in/login-in.module';
+import { RegisterModule } from './shared/register/register.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
@@ -26,7 +29,10 @@ import { NavbarModule} from './shared/navbar/navbar.module';
     DashboardModule,
     SidebarModule,
     NavbarModule,
-    FooterModule
+    FooterModule,
+    RegisterModule,
+    LoginInModule,
+    LockScreenModule
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, HttpService],
   bootstrap: [AppComponent]

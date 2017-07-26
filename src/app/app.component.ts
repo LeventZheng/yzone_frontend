@@ -14,6 +14,10 @@ declare var $: any;
 export class AppComponent implements OnInit {
     location: Location;
 
+    showRegister = false;
+    showLoginIn = false;
+    showLockScreen = false;
+
     constructor(
         location: Location,
         private http: HttpService) {
