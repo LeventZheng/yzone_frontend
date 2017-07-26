@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -11,7 +12,9 @@ import { PaginatorModule } from './../shared/theme/component/paginator/paginator
     PaginatorModule,
     GalleriaModule,
   ],
-  declarations: [],
+  declarations: [
+    
+  ],
   exports: [
     LightboxModule,
     PaginatorModule,
