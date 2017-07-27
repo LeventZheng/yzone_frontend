@@ -8,10 +8,6 @@ import { COMMON, REQUEST_URL } from './../services/api';
 @Injectable()
 export class HttpService {
     constructor(private http: Http) { }
-
-    setToken(token: string): void {
-        localStorage['Authorization'] = 'Bearer ' + token;
-    }
     
     getToken(): string {
         return localStorage['Authorization'];
@@ -38,7 +34,9 @@ export class HttpService {
         const options = new RequestOptions({ headers });
         const queryString = this.handleGetParams(params)
         url = url + queryString;
-        return this.http.get(url, options);
+        return this.http.get(url, options)
+            .map(this.extractData)
+            .catch(this.handleError);;
     }
 
     handleGetParams(params): string {
@@ -65,18 +63,18 @@ export class HttpService {
 
     // 处理接口回调
     private extractData(res: Response) {
-        // let body = res.json();
-        // if (body.code === 200) {
-        //     return (body.data === false) ? false : (body.data || true);
-        // }
-        // else if (body.code === 403) {
-        //     location.href = this.getLoginUrl();
-        // } else {
-        //     COMMON.toast(body.desc, false); //弹框样式,首页内置
-        //     return false;
-        // }
+        let body = res.json();
+        if (body.code === 200) {
+            return (body.data === false) ? false : (body.data || true);
+        }
+        else if (body.code === 403) {
+            // location.href = this.getLoginUrl();
+        } else {
+            // COMMON.toast(body.desc, false); //弹框样式,首页内置
+            return false;
+        }
         
-        return res.json()._body;
+        // return res.json()._body;
     }
     // 处理回调异常
     handleError(error: Response | any) {

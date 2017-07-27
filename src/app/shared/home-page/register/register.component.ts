@@ -23,6 +23,6 @@ export class RegisterComponent implements OnInit {
       userNickName: this.userNickName,
       email: this.email,
       password: this.password
-    });
+    }).subscribe((data) => {});
   }
 }

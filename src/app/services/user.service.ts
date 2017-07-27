@@ -17,17 +17,14 @@ export class UserService {
     }
 
     login(params) {
-        this.http.postWithoutToken(REQUEST_URL.login, params)
-            .subscribe((data) => {});
+        return this.http.postWithoutToken(REQUEST_URL.login, params);
     }
 
     register(params) {
-        return this.http.postWithoutToken(REQUEST_URL.register, params)
-            .subscribe((data) => {});
+        return this.http.postWithoutToken(REQUEST_URL.register, params);
     }
 
     getUserList() {
-        return this.http.post(REQUEST_URL.userList)
-        .subscribe((data) => {});
+        return this.http.get(REQUEST_URL.userList);
     }
 }

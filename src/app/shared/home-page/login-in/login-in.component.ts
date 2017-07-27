@@ -1,5 +1,5 @@
 import { UserService } from './../../../services/user.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'yzone-login-in',
@@ -10,6 +10,7 @@ export class LoginInComponent implements OnInit {
   email: string;
   password: string;
 
+  @Output() onLogin = new EventEmitter();
   constructor(
     private http: UserService
   ) { }
@@ -17,8 +18,16 @@ export class LoginInComponent implements OnInit {
   ngOnInit() {
   }
 
+  setToken(token: string): void {
+      localStorage['Authorization'] = 'Bearer ' + token;
+  }
+
   onSubmit() {
-    this.http.login({email: this.email, password: this.password});
+    this.http.login({email: this.email, password: this.password})
+      .subscribe((data) => {
+          console.log(data);
+          this.setToken(data.token);
+      });
   }
 
 }

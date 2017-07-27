@@ -1,7 +1,16 @@
 <div class="main-content">
-  <button class="add btn btn-primary btn-round btn-fab" rel="tooltip" data-placement="bottom" title="添加新用户">
+  <button class="add_btn btn btn-primary btn-round btn-fab" rel="tooltip" data-placement="bottom" 
+  title="添加新用户" (click)="showAddUser=!showAddUser">
     <i class="material-icons">add</i>
     <div class="ripple-container"></div>
   </button>
-  user-manage works!
+  <div>
+    <div class="col-sm-2" [ngClass]="{'col-sm-offset-1': i%4!=0}" *ngFor="let user of userList;let i=index;">
+        <h4>{{user?.userNickName}}</h4>
+        <img *ngIf="!user.avatar" src="./../../../assets/img/faces/avatar.jpg" alt="Raised Image" class="img-rounded img-responsive img-raised"> 
+        <img *ngIf="user.avatar" [src]="user.avatar" alt="Raised Image" class="img-rounded img-responsive img-raised"> 
+    </div>
+  </div>
 </div>
+
+<yzone-add-user *ngIf="showAddUser" (onClose)="showAddUser=false;" (onAdded)="onAddUser($event);"></yzone-add-user> 

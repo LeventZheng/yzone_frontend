@@ -1,3 +1,5 @@
+import { User } from './../../models/user';
+import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserManageComponent implements OnInit {
 
-  constructor() { }
+  userList: User[] = [];
+  showAddUser = false;
+  constructor(
+    private userService: UserService
+  ) { }
 
   ngOnInit() {
+    this.userService.getUserList()
+      .subscribe((data) => {
+        this.userList = data.userList;
+      });
+  }
+
+  onAddUser(user) {
+    this.userList.push(user);
+    this.showAddUser = false;
   }
 
 }
