@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { HomePageService } from './../../services/home-page.service';
+import { UserService } from './../../services/user.service';
 
 import { RegisterComponent } from './register/register.component';
 import { LoginInComponent } from './login-in/login-in.component';
@@ -42,6 +42,6 @@ import { SignBarComponent } from './sign-bar/sign-bar.component';
         RegisterComponent,
         SignBarComponent
     ],
-    providers: [HomePageService],
+    providers: [UserService],
 })
 export class HomePageModule { }

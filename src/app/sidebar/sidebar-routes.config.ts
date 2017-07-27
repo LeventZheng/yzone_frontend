@@ -7,5 +7,6 @@ export const ROUTES: RouteInfo[] = [
     { path: 'material/img', title: '图片', menuType: MenuType.LEFT, icon:'material-icons'},
     { path: 'material/music', title: '音频', menuType: MenuType.LEFT, icon:'material-icons'},
     { path: 'material/video', title: '视频', menuType: MenuType.LEFT, icon:'material-icons'},
+    { path: 'userManage', title: '用户管理', menuType: MenuType.LEFT, icon:'material-icons'},
 
 ];

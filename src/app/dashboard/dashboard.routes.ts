@@ -6,6 +6,7 @@ import { AlbumComponent } from './album/album.component';
 import { VideoManageComponent } from './material/video-manage/video-manage.component';
 import { MusicManageComponent } from './material/music-manage/music-manage.component';
 import { ImgManageComponent } from './material/img-manage/img-manage.component';
+import { UserManageComponent } from './user-manage/user-manage.component';
 
 export const MODULE_ROUTES: Route[] =[
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -15,6 +16,7 @@ export const MODULE_ROUTES: Route[] =[
     { path: 'material/music', component: MusicManageComponent },
     { path: 'material/video', component: VideoManageComponent },
     { path: 'album', component: AlbumComponent },
+    { path: 'userManage', component: UserManageComponent },
 ]
 //
 export const MODULE_COMPONENTS = [
@@ -24,4 +26,5 @@ export const MODULE_COMPONENTS = [
     MusicManageComponent,
     VideoManageComponent,
     AlbumComponent,
+    UserManageComponent,
 ]

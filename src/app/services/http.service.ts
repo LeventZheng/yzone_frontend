@@ -17,7 +17,7 @@ export class HttpService {
         return localStorage['Authorization'];
     }
 
-    postWithoutToken(url, params) {
+    postWithoutToken(url, params = {}) {
         const headers = new Headers({ 'Content-Type': 'application/json'});
         const options = new RequestOptions({ headers });
         return this.http.post(url, JSON.stringify(params), options)

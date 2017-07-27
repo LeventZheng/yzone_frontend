@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { SharedModule } from './../shared/shared.module';
 import { MODULE_ROUTES, MODULE_COMPONENTS } from './dashboard.routes';
 
+
 @NgModule({
     imports: [
         BrowserModule,

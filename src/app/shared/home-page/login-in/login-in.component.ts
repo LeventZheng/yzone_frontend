@@ -1,4 +1,4 @@
-import { HomePageService } from './../../../services/home-page.service';
+import { UserService } from './../../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,7 +11,7 @@ export class LoginInComponent implements OnInit {
   password: string;
 
   constructor(
-    private http: HomePageService
+    private http: UserService
   ) { }
 
   ngOnInit() {
