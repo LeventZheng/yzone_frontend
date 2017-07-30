@@ -56,3 +56,8 @@
 .tim-row h3{
     margin-top: 0;
 }
+
+html,body{ font-family: '微软雅黑';}
+.d_ib{ display: inline-block;}
+ta_c{ text-align: center;}
+.po_r{ position: relative;}

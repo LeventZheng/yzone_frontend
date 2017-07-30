@@ -1,0 +1,8 @@
+.album_img{
+    position: relative;
+    .btn_edit{ 
+        position: absolute; top: -3px;
+        &.btn_edit_album{ left: 0;}
+        &.btn_edit_photo{ left: 100px;}
+    }
+}

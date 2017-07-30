@@ -1,7 +1,35 @@
 <div class="main-content">
+  <button class="add_btn btn btn-primary btn-round btn-fab" rel="tooltip" data-placement="bottom" 
+  title="添加用户相册">
+    <i class="material-icons">add</i>
+    <div class="ripple-container"></div>
+  </button>
   <div class="container-fluid">
-    <div class="row" *ngFor="let album of albumList">
-      <p-lightbox *ngIf="album.resourceType==1" [images]="album.photoList" [styleClass]="'lightbox'"></p-lightbox>
+    <div class="card_column" *ngFor="let album of albumList">
+      <!-- <p-lightbox *ngIf="album.resourceType==1" [images]="album.photoList" [styleClass]="'lightbox'"></p-lightbox> -->
+      <div class="album_img" *ngIf="album.resourceType==1" >
+        <button class="btn btn-primary btn-xs btn_edit btn_edit_album">编辑相册</button>
+        <button class="btn btn-info btn-xs btn_edit btn_edit_photo" (click)="editPic(album)">编辑相片</button>
+        <p-carousel headerText="{{album.albumTitle}}" [value]="album.photoList" numVisible="5" easing="easeOutStrong" circular="false">
+          <ng-template let-photo pTemplate="item">
+              <!-- {{photo|json}} -->
+              <div class="ui-grid ui-grid-responsive">
+                <div class="ui-grid-row">
+                  <div class="ui-grid-col-12">
+                    <img class="img" style="width: 100%;" [src]="photo?.fileUrl" alt="">
+                  </div>
+                </div>
+                <div class="ui-grid-row">
+                  <div class="ui-grid-col-12" style="background-color: #fff; text-align: center;">
+                    <button type="button" class="btn btn-danger btn-simple" style="margin: 0; padding: 6px 0;" rel="tooltip" data-placement="bottom" title="删除" (click)="removePhoto(album.photoList, photo)">
+                        <i class="material-icons">close</i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+          </ng-template>
+        </p-carousel>
+      </div>
       <video *ngIf="album.resourceType==2" [src]="album.video.fileUrl" controls="controls"></video>
       <br>
       <br>

@@ -1,6 +1,6 @@
 import { COMMON } from './../shared/common/common';
 const REQUEST_URL = {
-  check: COMMON.API_aURL + '/user/check',
+  check: COMMON.API_URL + '/user/check',
   login: COMMON.API_aURL + '/user/login',
   register: COMMON.API_aURL + '/user/register',
   userList: COMMON.API_URL + '/user/list',
@@ -8,6 +8,7 @@ const REQUEST_URL = {
   saveMusic: COMMON.API_URL + '/music/save',
   userVideo: COMMON.API_URL + '/video/getVideoByUser',
   userAlbum: COMMON.API_URL + '/album/getAlbumByUser',
+  deletePhotoById: COMMON.API_URL + '/photo/deleteById'
 };
 
 export { REQUEST_URL, COMMON }

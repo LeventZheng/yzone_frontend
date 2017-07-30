@@ -5,12 +5,14 @@ import { CommonModule } from '@angular/common';
 import { LightboxModule } from './../shared/theme/component/lightbox/lightbox';
 import { GalleriaModule } from './../shared/theme/component/galleria/galleria';
 import { PaginatorModule } from './../shared/theme/component/paginator/paginator';
+import { CarouselModule } from './theme/component/carousel/carousel';
 
 @NgModule({
   imports: [
     LightboxModule,
     PaginatorModule,
     GalleriaModule,
+    CarouselModule,
   ],
   declarations: [
     
@@ -18,7 +20,8 @@ import { PaginatorModule } from './../shared/theme/component/paginator/paginator
   exports: [
     LightboxModule,
     PaginatorModule,
-    GalleriaModule
+    GalleriaModule,
+    CarouselModule
   ]
 })
 export class SharedModule { }

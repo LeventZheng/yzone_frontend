@@ -10,8 +10,8 @@ export class MusicService {
         private http: HttpService
     ) { }
 
-    getMusicListByUser() {
-        return this.http.post(REQUEST_URL.userMusic);
+    getMusicListByUser(params) {
+        return this.http.get(REQUEST_URL.userMusic, params);
     }
 
     save(music: Music) {

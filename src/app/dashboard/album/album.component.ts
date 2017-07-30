@@ -1,3 +1,6 @@
+import { PhotoService } from './../../services/photo.service';
+import { Photo } from './../../models/photo';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Album } from './../../models/album';
 import { AlbumService, COMMON } from './../../services/album.servicce';
 import { Component, OnInit } from '@angular/core';
@@ -6,31 +9,64 @@ import { Component, OnInit } from '@angular/core';
   selector: 'album',
   templateUrl: './album.component.html',
   styleUrls: ['./album.component.scss'],
-  providers: [AlbumService]
+  providers: [AlbumService, PhotoService]
 })
 export class AlbumComponent implements OnInit {
 
-  pageNumber = 1;
+  userId: number;
+  pageNumber = 0;
   pageSize = 10;
   totalElements: number;
   albumList: Album[] = new Array<Album>();
-  constructor(private http: AlbumService) { }
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private albumService: AlbumService,
+    private photoService: PhotoService) { }
 
   ngOnInit() {
-    this.getAlbumListByUser();
-  }
-
-  getAlbumListByUser() {
-    this.http.getAlbumListByUser({pageNumber:this.pageNumber,pageSize:this.pageSize}).subscribe((data) => {
-      this.albumList = COMMON.getBody(data).content;
-      this.totalElements = COMMON.getBody(data).totalElements;
+    this.activatedRoute.params.forEach((params: Params) => {
+      this.userId = +params['id'];
+      this.getAlbumListByUser();
     });
   }
 
+   getAlbumListByUser() {
+    this.albumService.getAlbumListByUser({pageNumber:this.pageNumber,pageSize:this.pageSize, userId: this.userId})
+    .subscribe((data) => {
+      this.albumList = data.content;
+      this.totalElements = data.totalElements;
+    });
+  } 
+
   paginate(e) {
-    console.log(e);
-    this.pageNumber = e.page+1;
+    this.pageNumber = e.page;
     this.getAlbumListByUser();
+  }
+
+  editPic(album: Album) {
+    album.editable = !album.editable;
+    if (album.editable) {
+      album.photoList.forEach((photo) => {
+        photo.editable = true;
+      });
+    } else {
+      album.photoList.forEach((photo) => {
+        photo.editable = false;
+      });
+    }
+  }
+
+  removePhoto(photoList: Photo[], photo: Photo) {
+    console.log(photo);
+    this.photoService.deleteById(photo.photoId).subscribe((data) => {
+      if (data === true) {
+        // 删除成功
+        photoList.filter((item) => {
+          return item.photoId != photo.photoId;
+        })
+      }
+    });;
   }
 
 }

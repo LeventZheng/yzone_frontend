@@ -4,5 +4,6 @@ export class Photo{
     photoTitle?: string;
     updatDate?: Date;
     creatDate?: Date;
+    editable?: boolean;
 }
 

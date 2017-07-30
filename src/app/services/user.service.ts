@@ -12,8 +12,7 @@ export class UserService {
     ) { }
 
     check() {
-        this.http.postWithoutToken(REQUEST_URL.check)
-            .subscribe((data) => {});
+        return this.http.post(REQUEST_URL.check);
     }
 
     login(params) {

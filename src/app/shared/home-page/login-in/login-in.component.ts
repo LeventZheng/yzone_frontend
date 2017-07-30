@@ -25,8 +25,9 @@ export class LoginInComponent implements OnInit {
   onSubmit() {
     this.http.login({email: this.email, password: this.password})
       .subscribe((data) => {
-          console.log(data);
           this.setToken(data.token);
+          localStorage.setItem('user', JSON.stringify(data.user));
+          this.onLogin.emit();
       });
   }
 

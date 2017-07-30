@@ -5,11 +5,11 @@
     <div class="ripple-container"></div>
   </button>
   <div>
-    <div class="col-sm-2" [ngClass]="{'col-sm-offset-1': i%4!=0}" *ngFor="let user of userList;let i=index;">
-        <h4>{{user?.userNickName}}</h4>
-        <img *ngIf="!user.avatar" src="./../../../assets/img/faces/avatar.jpg" alt="Raised Image" class="img-rounded img-responsive img-raised"> 
-        <img *ngIf="user.avatar" [src]="user.avatar" alt="Raised Image" class="img-rounded img-responsive img-raised"> 
-    </div>
+  <div class="col-sm-2" [ngClass]="{'col-sm-offset-1': i%4!=0}" *ngFor="let user of userList;let i=index;" (click)="goUserPage(user);">
+      <h4>{{user?.userNickName}}</h4>
+      <img *ngIf="!user.avatar" src="./../../../assets/img/faces/avatar.jpg" alt="Raised Image" class="img-rounded img-responsive img-raised"> 
+      <img *ngIf="user.avatar" [src]="user.avatar" alt="Raised Image" class="img-rounded img-responsive img-raised"> 
+  </div>
   </div>
 </div>
 

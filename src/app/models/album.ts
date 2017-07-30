@@ -14,4 +14,5 @@ export class Album{
     commentList?: Comment[] = new Array<Comment>();
     updatDate?: Date;
     creatDate?: Date;
+    editable?: boolean;
 }

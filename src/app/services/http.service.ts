@@ -39,6 +39,15 @@ export class HttpService {
             .catch(this.handleError);;
     }
 
+    postForm(url:string, params = {}, contentType = 'application/x-www-form-urlencoded') {
+        let headers = new Headers({ 'Content-Type': contentType, 'access-token': this.getToken() });
+        let options = new RequestOptions({ headers });
+        let queryString = this.handleFormParams(params);
+        return this.http.post(url, queryString, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
     handleGetParams(params): string {
         let queryString = '';
         for (const i in params) {

@@ -1,8 +1,7 @@
+import { UserService } from './services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LocationStrategy, PlatformLocation, Location } from '@angular/common';
-
-import { HttpService } from './services/http.service';
 
 declare var $: any;
 
@@ -20,7 +19,7 @@ export class AppComponent implements OnInit {
 
     constructor(
         location: Location,
-        private http: HttpService) {
+        private userService: UserService) {
         this.location = location;
     }
 
@@ -28,6 +27,11 @@ export class AppComponent implements OnInit {
         $.getScript('../assets/js/init/initMenu.js');
         $.getScript('../assets/js/demo.js');
         // TODO: 检查用户是否登录
+        this.userService.check().subscribe((data) => {
+            if (data === false) {
+                this.showLoginIn = true;
+            }
+        });
     }
 
     public isMap() {
