@@ -1,6 +1,9 @@
 <div class="main-content">
+  <div style="width: 200px; display: inline-block; margin-right: 10px;">
+    <input class="form-control" [(ngModel)]="y" placeholder="请输入秀美y" type="number">
+  </div>
   <button class="add_btn btn btn-primary btn-round btn-fab" rel="tooltip" data-placement="bottom" 
-  title="添加用户相册">
+  title="添加用户相册" (click)="addAlbumFromXiumei()">
     <i class="material-icons">add</i>
     <div class="ripple-container"></div>
   </button>
@@ -19,13 +22,14 @@
                     <img class="img" style="width: 100%;" [src]="photo?.fileUrl" alt="">
                   </div>
                 </div>
-                <div class="ui-grid-row">
+                <!-- 删除图片 -->
+                <!-- <div class="ui-grid-row">
                   <div class="ui-grid-col-12" style="background-color: #fff; text-align: center;">
                     <button type="button" class="btn btn-danger btn-simple" style="margin: 0; padding: 6px 0;" rel="tooltip" data-placement="bottom" title="删除" (click)="removePhoto(album.photoList, photo)">
                         <i class="material-icons">close</i>
                     </button>
                   </div>
-                </div>
+                </div> -->
               </div>
           </ng-template>
         </p-carousel>

@@ -14,6 +14,7 @@ import { Component, OnInit } from '@angular/core';
 export class AlbumComponent implements OnInit {
 
   userId: number;
+  y:number;
   pageNumber = 0;
   pageSize = 10;
   totalElements: number;
@@ -67,6 +68,15 @@ export class AlbumComponent implements OnInit {
         })
       }
     });;
+  }
+
+  addAlbumFromXiumei() {
+    if (!this.y) {return;}
+    this.albumService.addAlbumFromXiumei({userId: this.userId, y:this.y})
+    .subscribe((data) => {
+      console.log(data);
+      this.albumList.unshift(data);
+    });
   }
 
 }

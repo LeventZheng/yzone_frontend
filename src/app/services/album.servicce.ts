@@ -12,6 +12,10 @@ export class AlbumService {
     getAlbumListByUser(params) {
         return this.http.get(REQUEST_URL.userAlbum, params);
     }
+
+    addAlbumFromXiumei(params) {
+        return this.http.get(REQUEST_URL.addAlbumFromXiumei, params);
+    }
 }
 export { COMMON }
 

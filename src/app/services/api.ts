@@ -8,6 +8,7 @@ const REQUEST_URL = {
   saveMusic: COMMON.API_URL + '/music/save',
   userVideo: COMMON.API_URL + '/video/getVideoByUser',
   userAlbum: COMMON.API_URL + '/album/getAlbumByUser',
+  addAlbumFromXiumei: COMMON.API_URL + '/album/addAlbumFromXiumei',
   deletePhotoById: COMMON.API_URL + '/photo/deleteById'
 };
 
