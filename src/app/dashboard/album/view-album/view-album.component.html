@@ -1,0 +1,9 @@
+<div>
+  <div class="viewer" id="viewer"></div>
+  <div>
+    <ul id="images">
+        <li *ngFor="let photo of album.photoList;let i=index;"><img [id]="'image_'+i" [src]="photo?.fileUrl"></li>
+    </ul>
+  </div>
+  <div style="height: 450px;"></div>
+</div>

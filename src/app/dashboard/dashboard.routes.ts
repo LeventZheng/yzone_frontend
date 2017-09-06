@@ -1,3 +1,4 @@
+import { ViewAlbumComponent } from './album/view-album/view-album.component';
 import { Route, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
@@ -28,6 +29,7 @@ export const MODULE_COMPONENTS = [
     MusicManageComponent,
     VideoManageComponent,
     AlbumComponent,
+    ViewAlbumComponent,
     UserManageComponent,
     AddUserComponent
 ]

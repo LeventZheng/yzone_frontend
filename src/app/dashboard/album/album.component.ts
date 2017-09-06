@@ -19,6 +19,8 @@ export class AlbumComponent implements OnInit {
   pageSize = 10;
   totalElements: number;
   albumList: Album[] = new Array<Album>();
+  selectedAlbum: Album;
+  playAlbum = false;
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -44,8 +46,13 @@ export class AlbumComponent implements OnInit {
     this.pageNumber = e.page;
     this.getAlbumListByUser();
   }
+  
+  onPlayAlbum(album: Album) {
+    this.selectedAlbum = album;
+    this.playAlbum = true;
+  }
 
-  editPic(album: Album) {
+  /* editPic(album: Album) {
     album.editable = !album.editable;
     if (album.editable) {
       album.photoList.forEach((photo) => {
@@ -56,9 +63,10 @@ export class AlbumComponent implements OnInit {
         photo.editable = false;
       });
     }
-  }
+  } */
 
-  removePhoto(photoList: Photo[], photo: Photo) {
+
+  /* removePhoto(photoList: Photo[], photo: Photo) {
     console.log(photo);
     this.photoService.deleteById(photo.photoId).subscribe((data) => {
       if (data === true) {
@@ -68,7 +76,7 @@ export class AlbumComponent implements OnInit {
         })
       }
     });;
-  }
+  } */
 
   addAlbumFromXiumei() {
     if (!this.y) {return;}

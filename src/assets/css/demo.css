@@ -58,6 +58,8 @@
 }
 
 html,body{ font-family: '微软雅黑';}
+.btn{ cursor: pointer;}
 .d_ib{ display: inline-block;}
-ta_c{ text-align: center;}
+.ta_c{ text-align: center;}
 .po_r{ position: relative;}
+.cur_p{ cursor: pointer;}
