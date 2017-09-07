@@ -18,6 +18,7 @@ export const MODULE_ROUTES: Route[] =[
     { path: 'material/music', component: MusicManageComponent },
     { path: 'material/video', component: VideoManageComponent },
     { path: 'album', component: AlbumComponent },
+    { path: 'show', component: ViewAlbumComponent},
     { path: 'userManage', component: UserManageComponent },
     { path: 'userManage/user/:id', component: AlbumComponent}
 ]

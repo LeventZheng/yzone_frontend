@@ -1,0 +1,22 @@
+#images{
+    position: fixed;
+    left: 50%;
+    margin-left: -25%;
+    top: 10%;
+    z-index: 2;
+}
+#images li img{
+    width: 100%;
+    cursor: -webkit-zoom-in;
+    cursor: zoom-in;
+}
+
+.mask{
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.85);
+}
