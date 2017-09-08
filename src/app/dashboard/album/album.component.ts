@@ -5,6 +5,9 @@ import { Album } from './../../models/album';
 import { AlbumService, COMMON } from './../../services/album.servicce';
 import { Component, OnInit } from '@angular/core';
 
+declare var Viewer: any;
+declare var $: any;
+
 @Component({
   selector: 'album',
   templateUrl: './album.component.html',
@@ -21,6 +24,8 @@ export class AlbumComponent implements OnInit {
   albumList: Album[] = new Array<Album>();
   selectedAlbum: Album;
   playAlbum = false;
+
+  viewer: any;
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -32,6 +37,14 @@ export class AlbumComponent implements OnInit {
       this.userId = +params['id'];
       this.getAlbumListByUser();
     });
+    this.initPage();
+  }
+
+  // 收起边栏
+  initPage() {
+    if ($('body').hasClass('sidebar-mini')) {} else {
+      $('body').addClass('sidebar-mini');
+    }
   }
 
    getAlbumListByUser() {
@@ -45,11 +58,6 @@ export class AlbumComponent implements OnInit {
   paginate(e) {
     this.pageNumber = e.page;
     this.getAlbumListByUser();
-  }
-  
-  onPlayAlbum(album: Album) {
-    this.selectedAlbum = album;
-    this.playAlbum = true;
   }
 
   /* editPic(album: Album) {
@@ -85,6 +93,55 @@ export class AlbumComponent implements OnInit {
       console.log(data);
       this.albumList.unshift(data);
     });
+  }
+
+  initViewer(id: number) {
+    let _self = this;
+    let viewerContainer;
+    let options = {
+      zIndex: 1030,
+      interval: 2000,
+      navbar: 1,
+      title: 1,
+      fullscreen: true,
+      transition: true,
+      keyboard: true,
+      ready: function (e) {
+        console.log('ready');
+          // $('.viewer-container').css({top: document.getElementById('images_' + id).offsetTop + 'px', bottom: document.getElementById('images_' + id).offsetTop*(-1) + 'px'});
+          // document.body.style.overflowY = 'hidden';
+      },
+      show: function (e) {
+        console.log('show');
+      },
+      shown: function (e) {
+          console.log(e.type);
+      },
+      hide: function (e) {
+          console.log(e.type);
+      },
+      hidden: function (e) {
+          console.log(e.type);
+          document.body.style.overflowY = '';
+      },
+      view: function (e) {
+          console.log(e.type, e.detail.index);
+          this.viewer.play();
+      },
+      viewed: function (e) {
+          console.log(e.type, e.detail.index);
+          // this.viewer.zoomTo(1).rotateTo(180);
+          // _self.viewer.zoomTo(0.38, true);
+          // _self.viewer.moveTo(60, 0);
+      }
+    };
+    return options;
+  }
+  
+  onPlayAlbum(id: number) {
+    const viewerOption = this.initViewer(id);
+    this.viewer = new Viewer(document.getElementById('images_' + id), viewerOption);
+    
   }
 
 }

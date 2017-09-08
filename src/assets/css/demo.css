@@ -63,3 +63,6 @@ html,body{ font-family: '微软雅黑';}
 .ta_c{ text-align: center;}
 .po_r{ position: relative;}
 .cur_p{ cursor: pointer;}
+
+.flex{ display: flex;}
+.flex_1{ flex: 1;}

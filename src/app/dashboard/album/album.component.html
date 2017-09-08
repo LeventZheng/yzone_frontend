@@ -8,31 +8,11 @@
     <div class="ripple-container"></div>
   </button>
   <div class="container-fluid">
-    <div class="card_column" *ngFor="let album of albumList">
+    <div class="" *ngFor="let album of albumList;let id=index;">
       <div class="album_img" *ngIf="album.resourceType==1" >
-        <button class="btn btn-primary btn-xs btn_edit btn_edit_album">编辑相册</button>
-        <button class="btn btn-info btn-xs btn_edit btn_edit_photo" (click)="onPlayAlbum(album)">播放相册</button>
-        <div style="padding-top: 35px;">
-          <p-carousel headerText="{{album.albumTitle}}" [value]="album.photoList" numVisible="5" easing="easeOutStrong" circular="false">
-            <ng-template let-photo pTemplate="item">
-                <!-- {{photo|json}} -->
-                <div class="ui-grid ui-grid-responsive">
-                  <div class="ui-grid-row">
-                    <div class="ui-grid-col-12">
-                      <img class="img" style="width: 100%;" [src]="photo?.fileUrl" alt="">
-                    </div>
-                  </div>
-                  <!-- 删除图片 -->
-                  <!-- <div class="ui-grid-row">
-                    <div class="ui-grid-col-12" style="background-color: #fff; text-align: center;">
-                      <button type="button" class="btn btn-danger btn-simple" style="margin: 0; padding: 6px 0;" rel="tooltip" data-placement="bottom" title="删除" (click)="removePhoto(album.photoList, photo)">
-                          <i class="material-icons">close</i>
-                      </button>
-                    </div>
-                  </div> -->
-                </div>
-            </ng-template>
-          </p-carousel>
+        <!-- <button class="btn btn-primary btn-xs btn_edit btn_edit_album">编辑相册</button> -->
+        <div class="photo_list" [id]="'images_'+id" (click)="onPlayAlbum(id)">
+            <img *ngFor="let photo of album.photoList;let i=index;" [hidden]="i>5" [src]="photo?.fileUrl">
         </div>
       </div>
       <video *ngIf="album.resourceType==2" [src]="album.video.fileUrl" controls="controls"></video>
@@ -51,7 +31,4 @@
       </div>
     </div>
   </div>
-</div>
-<div class="play_album" *ngIf="playAlbum">
-  <yzone-view-album [album]="selectedAlbum"></yzone-view-album>
 </div>
