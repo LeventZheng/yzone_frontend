@@ -68,3 +68,4 @@ html,body{ font-family: '微软雅黑';}
 
 .flex{ display: flex;}
 .flex_1{ flex: 1;}
+.clear:after{ clear: both;}

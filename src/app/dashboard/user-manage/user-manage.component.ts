@@ -34,4 +34,11 @@ export class UserManageComponent implements OnInit {
     this.router.navigate(['./user', user.userId], {relativeTo: this.activatedRoute});
   }
 
+  setUserAvatar(avatar: string) {
+    return {
+      'background': `url(${avatar}) center no-repeat`,
+      'background-size': '100%'
+    }
+  }
+
 }

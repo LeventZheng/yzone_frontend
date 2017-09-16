@@ -1,5 +1,7 @@
-<div>
+<div id="view_album">
   <!-- <div class="mask"></div> -->
+  <audio id="video" [src]="audioUrl" loop="loop"></audio>
+  <div class="full" (click)="toggleScreen()">全屏</div>
   <div class="col-md-12" id="images" (click)="onPlayAlbum()">
     <ul>
         <li class="col-md-4" *ngFor="let photo of photoList;let i=index;"><img [id]="'image_'+i" [src]="photo?.fileUrl"></li>

@@ -1,8 +1,8 @@
-import { Photo } from './../../../models/photo';
 import { AlbumService } from './../../../services/album.servicce';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Component, OnInit, Input, OnChanges, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Album } from './../../../models/album';
+import { Photo } from './../../../models/photo';
 
 declare var Viewer: any;
 declare var $: any;
@@ -12,13 +12,14 @@ declare var $: any;
   styleUrls: ['./view-album.component.scss'],
   providers: [AlbumService]
 })
-export class ViewAlbumComponent implements OnInit, OnChanges, OnDestroy {
+export class ViewAlbumComponent implements OnInit {
 
   id: number;
   viewer: any;
 
  album: Album;
  photoList: Photo[];
+ audioUrl:String;
   images: any[];
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -33,22 +34,6 @@ export class ViewAlbumComponent implements OnInit, OnChanges, OnDestroy {
       this.getAlbumById();
     });
   }
-  ngOnChanges(value) {
-    console.log(value);
-  }
-
-  ngOnDestroy() {
-    $('.sidebar').css();
-    $('.navbar').css();
-    $('.main-panel').css();
-  }
-
-  getAlbumById() {
-    this.albumService.getAlbumById({albumId: this.id}).subscribe((data) => {
-      this.album = data;
-      this.photoList = this.album.photoList;
-    });
-  }
 
   initPage() {
     $('.sidebar').css({display: 'none'});
@@ -56,6 +41,50 @@ export class ViewAlbumComponent implements OnInit, OnChanges, OnDestroy {
     $('footer').css({display: 'none'});
     $('.main-panel').css({width: '100%'});
   }
+  // 切换全屏状态
+  toggleScreen() {
+    if (this._fullscreenElement()) {
+      this._exitFullscreen();
+    } else {
+      this._launchFullscreen();
+    }
+  }
+  // 判断是否全屏
+  _fullscreenElement() {
+    return window.document.fullscreenElement  || window.document.webkitFullscreenElement || false;
+  }
+  // 全屏
+  _launchFullscreen() {
+    const element = (document.querySelector("#view_album") as any);
+    if (element.requestFullscreen) {
+      element.requestFullscreen();
+    } else if (element.mozRequestFullScreen) {
+      element.mozRequestFullScreen();
+    } else if (element.webkitRequestFullscreen) {
+      element.webkitRequestFullscreen();
+    } else if (element.msRequestFullscreen) {
+      element.msRequestFullscreen();
+    }
+  }
+  // 退出全屏
+  _exitFullscreen() {
+    if (document.exitFullscreen) {
+      window.document.exitFullscreen();
+    } else if ((document as any).mozCancelFullScreen) {
+      (window.document as any).mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+      window.document.webkitExitFullscreen();
+    }
+  }
+
+  getAlbumById() {
+    this.albumService.getAlbumById({albumId: this.id}).subscribe((data) => {
+      this.album = data;
+      this.photoList = this.album.photoList;
+      this.audioUrl = this.album.music.fileUrl;
+    });
+  }
+
 
   initViewer() {
     let _self = this;
@@ -77,6 +106,7 @@ export class ViewAlbumComponent implements OnInit, OnChanges, OnDestroy {
       shown: function (e) {
           console.log(e.type);
           _self.photoList = _self.album.photoList.slice(0,3);
+          (document.getElementById('video') as HTMLVideoElement).play();
       },
       hide: function (e) {
           console.log(e.type);
@@ -84,6 +114,8 @@ export class ViewAlbumComponent implements OnInit, OnChanges, OnDestroy {
       hidden: function (e) {
           console.log(e.type);
           _self.photoList = _self.album.photoList;
+          (document.getElementById('video') as HTMLVideoElement).pause();
+          (document.getElementById('video') as HTMLVideoElement).currentTime = 0;
       },
       view: function (e) {
           console.log(e.type, e.detail.index);
@@ -97,6 +129,7 @@ export class ViewAlbumComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   onPlayAlbum() {
+    this._launchFullscreen();
     const viewerOption = this.initViewer();
     this.viewer = new Viewer(document.getElementById('images'), viewerOption);
   }

@@ -19,13 +19,12 @@ export class AlbumComponent implements OnInit {
 
   userId: number;
   y:number;
+  resourceType = 1;
   musicUrl:String;
   pageNumber = 0;
-  pageSize = 5;
+  pageSize = 10;
   totalElements: number;
   albumList: Album[] = new Array<Album>();
-  selectedAlbum: Album;
-  playAlbum = false;
 
   viewer: any;
   constructor(
@@ -50,7 +49,7 @@ export class AlbumComponent implements OnInit {
   }
 
    getAlbumListByUser() {
-    this.albumService.getAlbumListByUser({pageNumber:this.pageNumber,pageSize:this.pageSize, userId: this.userId})
+    this.albumService.getAlbumListByUser({pageNumber:this.pageNumber,pageSize:this.pageSize, userId: this.userId, resourceType: this.resourceType})
     .subscribe((data) => {
       this.albumList = data.content;
       this.totalElements = data.totalElements;
@@ -99,7 +98,6 @@ export class AlbumComponent implements OnInit {
 
   goViewAlbum(id: number) {
     const url = 'http://' + location.host + this.location.prepareExternalUrl('album/' + id);
-    // const url = 'http://' + location.host + '/#/album/' + id;
     window.open(url);
   }
 
