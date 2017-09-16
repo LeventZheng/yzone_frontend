@@ -2,17 +2,20 @@
   <div style="width: 200px; display: inline-block; margin-right: 10px;">
     <input class="form-control" [(ngModel)]="y" placeholder="请输入秀美y" type="number">
   </div>
+  <div style="width: 200px; display: inline-block; margin-right: 10px;">
+    <input class="form-control" [(ngModel)]="musicUrl" placeholder="music url" type="text">
+  </div>
   <button class="add_btn btn btn-primary btn-round btn-fab" rel="tooltip" data-placement="bottom" 
   title="添加用户相册" (click)="addAlbumFromXiumei()">
     <i class="material-icons">add</i>
     <div class="ripple-container"></div>
   </button>
   <div class="container-fluid">
-    <div class="" *ngFor="let album of albumList;let id=index;">
+    <div class="" *ngFor="let album of albumList">
       <div class="album_img" *ngIf="album.resourceType==1" >
         <!-- <button class="btn btn-primary btn-xs btn_edit btn_edit_album">编辑相册</button> -->
-        <div class="photo_list" [id]="'images_'+id" (click)="onPlayAlbum(id)">
-            <img *ngFor="let photo of album.photoList;let i=index;" [hidden]="i>5" [src]="photo?.fileUrl">
+        <div class="photo_list" [id]="'images_'+album.albumId" (click)="goViewAlbum(album.albumId)">
+            <img *ngFor="let photo of album.photoList;let i=index;" [hidden]="i>4" [src]="photo?.fileUrl">
         </div>
       </div>
       <video *ngIf="album.resourceType==2" [src]="album.video.fileUrl" controls="controls"></video>

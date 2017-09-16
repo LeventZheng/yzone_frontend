@@ -1,6 +1,7 @@
+import { Location } from '@angular/common';
 import { PhotoService } from './../../services/photo.service';
 import { Photo } from './../../models/photo';
-import { ActivatedRoute, Router, Params } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Album } from './../../models/album';
 import { AlbumService, COMMON } from './../../services/album.servicce';
 import { Component, OnInit } from '@angular/core';
@@ -18,8 +19,9 @@ export class AlbumComponent implements OnInit {
 
   userId: number;
   y:number;
+  musicUrl:String;
   pageNumber = 0;
-  pageSize = 10;
+  pageSize = 5;
   totalElements: number;
   albumList: Album[] = new Array<Album>();
   selectedAlbum: Album;
@@ -28,7 +30,7 @@ export class AlbumComponent implements OnInit {
   viewer: any;
   constructor(
     private activatedRoute: ActivatedRoute,
-    private router: Router,
+    private location: Location,
     private albumService: AlbumService,
     private photoService: PhotoService) { }
 
@@ -37,7 +39,7 @@ export class AlbumComponent implements OnInit {
       this.userId = +params['id'];
       this.getAlbumListByUser();
     });
-    this.initPage();
+    // this.initPage();
   }
 
   // 收起边栏
@@ -88,11 +90,17 @@ export class AlbumComponent implements OnInit {
 
   addAlbumFromXiumei() {
     if (!this.y) {return;}
-    this.albumService.addAlbumFromXiumei({userId: this.userId, y:this.y})
+    this.albumService.addAlbumFromXiumei({userId: this.userId, y:this.y, musicUrl: this.musicUrl})
     .subscribe((data) => {
       console.log(data);
       this.albumList.unshift(data);
     });
+  }
+
+  goViewAlbum(id: number) {
+    const url = 'http://' + location.host + this.location.prepareExternalUrl('album/' + id);
+    // const url = 'http://' + location.host + '/#/album/' + id;
+    window.open(url);
   }
 
   initViewer(id: number) {
@@ -141,7 +149,6 @@ export class AlbumComponent implements OnInit {
   onPlayAlbum(id: number) {
     const viewerOption = this.initViewer(id);
     this.viewer = new Viewer(document.getElementById('images_' + id), viewerOption);
-    
   }
 
 }

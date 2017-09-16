@@ -1,14 +1,24 @@
-#images{
+/* #images{
     position: fixed;
     left: 50%;
     margin-left: -25%;
     top: 10%;
     z-index: 2;
+} */
+#images{
+    padding: 0;
 }
-#images li img{
+ul{ padding: 0;}
+ul:after{ clear: both}
+li img{
     width: 100%;
     cursor: -webkit-zoom-in;
     cursor: zoom-in;
+}
+
+ul li{
+    list-style: none;
+    padding: 0;
 }
 
 .mask{

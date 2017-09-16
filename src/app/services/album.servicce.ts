@@ -13,6 +13,10 @@ export class AlbumService {
         return this.http.get(REQUEST_URL.userAlbum, params);
     }
 
+    getAlbumById(params) {
+        return this.http.get(REQUEST_URL.getAlbumById, params);
+    }
+
     addAlbumFromXiumei(params) {
         return this.http.get(REQUEST_URL.addAlbumFromXiumei, params);
     }
